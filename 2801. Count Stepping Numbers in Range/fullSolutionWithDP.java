@@ -7,7 +7,7 @@ class Solution {
     public int countSteppingNumbers(String low, String high) {
         for(int i=0;i<memo.length;++i){
             for(int j =0;j<memo[i].length;++j){
-                //the -1 will eman that we have not set any number yet
+                //the -1 will mean that we have not set any number yet
                 memo[i][j] = -1;
             }
         }
@@ -39,8 +39,8 @@ class Solution {
                 continue;
             }
             currentPath.add(i);
-            boolean equalsLowerBound = length == lowI.size() && i <= lowI.get(0);
-            boolean equalsUpperBound = length == highI.size() && i >= highI.get(0);
+            boolean equalsLowerBound = length == lowI.size() && i == lowI.get(0);
+            boolean equalsUpperBound = length == highI.size() && i == highI.get(0);
             count += (getCount(length-1, currentPath, equalsLowerBound, equalsUpperBound) % mod);
             count %= mod;
             currentPath.remove(0);
@@ -66,11 +66,11 @@ class Solution {
                     //if smaller then the lower bound do not continue generation
                     continue;
                 } else if(nextInts[last][i] == lowI.get(nextDigitIndex)) {
-                    //if euqls to the lower bound, need to keep cheking for next digits
+                    //if equals to the lower bound, need to keep checking for next digits
                     nextEqualsLowerBound = true;
                 } else {
                     //if the digit is bigger then the corresponding digit in the lower bound, 
-                    //there is not need to keep cheking if we crossign the bound
+                    //there is not need to keep checking if we crossing the bound
                     nextEqualsLowerBound = false;
                 }
             }
@@ -79,11 +79,11 @@ class Solution {
                     //if bigger then upper bound do not continue the generation
                     continue;
                 } else if(nextInts[last][i] == highI.get(nextDigitIndex)) {
-                    //if euqls to the upper bound, need to keep cheking for next digits
+                    //if equals to the upper bound, need to keep checking for next digits
                     nextEqualsUpperBound = true;
                 } else {
                     //if the digit is smaller then the corresponding digit in the upper bound, 
-                    //there is not need to keep cheking if we crossign the bound
+                    //there is not need to keep checking if we crossing the bound
                     nextEqualsUpperBound = false;
                 }
             }
